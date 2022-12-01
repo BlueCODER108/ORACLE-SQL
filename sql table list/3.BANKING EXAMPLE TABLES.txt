@@ -1,0 +1,70 @@
+
+create table account_types
+(
+atype    varchar2(10) primary key,
+aname   varchar2(25)  not null
+);
+
+insert into account_types values
+('sb','savings account');
+insert into account_types values
+('ca','current account');
+insert into account_types values
+('demat','trading account');
+insert into account_types values
+('fd','fixed deposit account');
+
+create table customer 
+(
+cid   varchar2(10) primary key,
+cname  varchar2(14)  not null,
+phno   number(10) unique
+);
+
+insert into customer values
+('c101','ajay',9800198002);
+insert into customer values
+('c102','sravya',9877698776);
+insert into customer values
+('c103','krish',7897897890);
+
+
+create table accounts
+(
+actno       number(6) primary key,
+balance   number(10,2),
+opendt    date,
+cid           varchar2(10),      
+atype       varchar2(10),
+constraint  fk_cid_accounts foreign key(cid) references customer(cid),
+constraint  fk_atype_accounts foreign key(atype) references account_types(atype)
+);
+
+insert into accounts values
+(101001,50000,'20-jun-2021','c101','sb');
+insert into accounts values
+(101002,40000,'10-jun-2021','c101','demat');
+insert into accounts values
+(101004,10000,'11-jan-2020','c103','sb');
+insert into accounts values
+(101003,25000,'25-dec-2021','c103','ca');
+
+
+-- display customer name, account no, account name, balance?
+
+select c.cname, a.actno, at.aname,a.balance
+from customer c, accounts a, account_types at
+where 
+c.cid = a.cid
+and
+a.atype = at.atype;
+
+SELECT C.CNAME, A.ACTNO, AT.ANAME,A.BALANCE
+FROM  customer c inner join accounts a
+on c.cid = a.cid
+                         inner join  account_types  at
+on  a.atype = at.atype;
+
+
+
+

@@ -1,0 +1,24 @@
+create table constraints
+(
+cno number(4) primary key,
+check ( cno between 1 and 9999),
+cname varchar2(15) not null,
+gender varchar2(5) not null,
+panno varchar2(10) not null,
+aadharno number(12) not null,
+check(length(aadharno)=12),
+phno number(10) unique,
+check (length(phno)=10),
+check(phno like '6%' or phno like '7%' or phno like '8%' or phno like '9%')
+);
+
+insert into constraints( cno, cname, gender, panno, aadharno, phno) values( 0901, 'radha', 'female', 'PAN6780899', 679089038978,9286792829);
+insert into constraints( cno, cname, gender, panno, aadharno, phno) values( 0801, 'raghu', 'male', 'PAN6745899', 679799038978,928792829);
+insert into constraints( cno, cname, gender, panno, aadharno, phno) values( 0991, 'lahari', 'female', 'PAN6880899', 679089038978,9286799029);
+insert into constraints( cno, cname, gender, panno, aadharno, phno) values( 0671, 'niharika', 'female', 'PAN6220899', 209089038978,9285092829);
+insert into constraints( cno, cname, gender, panno, aadharno, phno) values( 0121, 'abhishek', 'male', 'PAN6784599', 459089038978,9286790829);
+insert into constraints( cno, cname, gender, panno, aadharno, phno) values( 9801, 'raviteja', 'male', 'PAN6786799', 909089038978,9286778829);
+insert into constraints( cno, cname, gender, panno, aadharno, phno) values( 6791, 'shubhadra', 'female', 'PAN6737899', 899089038978,9256792829);
+insert into constraints( cno, cname, gender, panno, aadharno, phno) values( 2981, 'kanakamahalaxmi', 'female', 'PAN6738899', 659089038978,6767928209);
+insert into constraints( cno, cname, gender, panno, aadharno, phno) values( 4561, 'madhavi', 'female', 'PAN6780909', 690089038978,8286792829);
+
