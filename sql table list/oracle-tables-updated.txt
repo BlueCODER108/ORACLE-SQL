@@ -1,0 +1,801 @@
+--------------------------------------------------------
+--  File created - Sunday-April-27-2014   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table DEPT
+--------------------------------------------------------
+
+  CREATE TABLE "DEPT" ("DEPTNO" NUMBER(2,0), "DNAME" VARCHAR2(14), "LOC" VARCHAR2(13));
+
+
+Insert into DEPT (DEPTNO,DNAME,LOC) values (10,'ACCOUNTING','NEW YORK');
+Insert into DEPT (DEPTNO,DNAME,LOC) values (20,'RESEARCH','DALLAS');
+Insert into DEPT (DEPTNO,DNAME,LOC) values (30,'SALES','CHICAGO');
+Insert into DEPT (DEPTNO,DNAME,LOC) values (40,'OPERATIONS','BOSTON');
+--------------------------------------------------------
+--  DDL for Index PK_DEPT
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_DEPT" ON "DEPT" ("DEPTNO");
+
+--------------------------------------------------------
+--  Constraints for Table DEPT
+--------------------------------------------------------
+
+  ALTER TABLE "DEPT" ADD CONSTRAINT "PK_DEPT" PRIMARY KEY ("DEPTNO") ENABLE;
+
+
+
+
+
+--------------------------------------------------------
+--  File created - Sunday-April-27-2014   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table EMP
+--------------------------------------------------------
+
+  CREATE TABLE "EMP" ("EMPNO" NUMBER(4,0), "ENAME" VARCHAR2(10), "JOB" VARCHAR2(9), "MGR" NUMBER(4,0), "HIREDATE" DATE, "SAL" NUMBER(7,2), "COMM" NUMBER(7,2), "DEPTNO" NUMBER(2,0));
+
+
+Insert into EMP (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO) values (7369,'SMITH','CLERK',7902,to_date('17-DEC-80','DD-MON-RR'),800,null,20);
+Insert into EMP (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO) values (7499,'ALLEN','SALESMAN',7698,to_date('20-FEB-81','DD-MON-RR'),1600,300,30);
+Insert into EMP (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO) values (7521,'WARD','SALESMAN',7698,to_date('22-FEB-81','DD-MON-RR'),1250,500,30);
+Insert into EMP (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO) values (7566,'JONES','MANAGER',7839,to_date('02-APR-81','DD-MON-RR'),2975,null,20);
+Insert into EMP (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO) values (7654,'MARTIN','SALESMAN',7698,to_date('28-SEP-81','DD-MON-RR'),1250,1400,30);
+Insert into EMP (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO) values (7698,'BLAKE','MANAGER',7839,to_date('01-MAY-81','DD-MON-RR'),2850,null,30);
+Insert into EMP (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO) values (7782,'CLARK','MANAGER',7839,to_date('09-JUN-81','DD-MON-RR'),2450,null,10);
+Insert into EMP (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO) values (7788,'SCOTT','ANALYST',7566,to_date('19-APR-87','DD-MON-RR'),3000,null,20);
+Insert into EMP (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO) values (7839,'KING','PRESIDENT',null,to_date('17-NOV-81','DD-MON-RR'),5000,null,10);
+Insert into EMP (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO) values (7844,'TURNER','SALESMAN',7698,to_date('08-SEP-81','DD-MON-RR'),1500,0,30);
+Insert into EMP (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO) values (7876,'ADAMS','CLERK',7788,to_date('23-MAY-87','DD-MON-RR'),1100,null,20);
+Insert into EMP (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO) values (7900,'JAMES','CLERK',7698,to_date('03-DEC-81','DD-MON-RR'),950,null,30);
+Insert into EMP (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO) values (7902,'FORD','ANALYST',7566,to_date('03-DEC-81','DD-MON-RR'),3000,null,20);
+Insert into EMP (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO) values (7934,'MILLER','CLERK',7782,to_date('23-JAN-82','DD-MON-RR'),1300,null,10);
+--------------------------------------------------------
+--  DDL for Index PK_EMP
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_EMP" ON "EMP" ("EMPNO");
+
+--------------------------------------------------------
+--  Constraints for Table EMP
+--------------------------------------------------------
+
+  ALTER TABLE "EMP" ADD CONSTRAINT "PK_EMP" PRIMARY KEY ("EMPNO") ENABLE;
+
+--------------------------------------------------------
+--  Ref Constraints for Table EMP
+--------------------------------------------------------
+
+  ALTER TABLE "EMP" ADD CONSTRAINT "FK_DEPTNO" FOREIGN KEY ("DEPTNO") REFERENCES "DEPT" ("DEPTNO") ENABLE;
+
+--------------------------------------------------------
+
+----------------------------------------------------------------------------------------
+
+Create Table comp_dtls
+(
+comp_code  varchar2(10)
+constraint PK_COMP_CODE PRIMARY KEY,
+comp_name  varchar2(20),
+city   varchar2(10)
+);
+
+Insert into comp_dtls values('I101','IBM','NEW YORK');
+Insert into comp_dtls values('W202','WIPRO','CHICAGO');
+Insert into comp_dtls values('D303','DELL','TEXAS');
+Insert into comp_dtls values('S404','SAMSUNG','KOREA');
+Insert into comp_dtls values('S505','SANYO','KOREA');
+Insert into comp_dtls values('P606','PHILIPS','JAPAN');
+Insert into comp_dtls values('B707','BOSE','USA');
+
+Create table Prod_dtls
+(
+prod_code varchar2(10),
+prod_name varchar2(20),
+cost number(7,2),
+mfg date,
+warrenty varchar2(10)
+);
+
+Insert into Prod_dtls values('ILTPQS','LAPTOP',45000,'11-FEB-12','4 YEARS');
+Insert into Prod_dtls values('ILTPXS','LAPTOP',34000,'21-MAR-12','4 YEARS');
+Insert into Prod_dtls values('ILTPZS','LAPTOP',40000,'12-FEB-13','7 YEARS');
+Insert into Prod_dtls values('WDTPG','DESKTOP',23000,'30-OCT-12','1 YEAR');
+Insert into Prod_dtls values('WCFLL','LIGHTS',3400,'22-JAN-13','2 YEARS');
+Insert into Prod_dtls values('DDTPW','DESKTOP',27000,'13-NOV-12','5 YEARS');
+Insert into Prod_dtls values('DLTPG','LAPTOP',46000,'08-JAN-13','2 YEARS');
+Insert into Prod_dtls values('DMBLY','MOBILE',32000,'10-JAN-13',NULL);
+Insert into Prod_dtls values('SLTPC','LAPTOP',34000,'04-DEC-12','6 MONTHS');
+Insert into Prod_dtls values('SLTPD','LAPTOP',45000,'09-DEC-12','2 YEARS');
+Insert into Prod_dtls values('SMBLGLXY','MOBILE',24000,'10-JAN-12','1 YEAR');
+Insert into Prod_dtls values('SMBLGLXG','MOBILE',21500,'02-FEB-13','1 YEAR');
+
+ALTER TABLE PROD_DTLS 
+ADD COMP_CODE  VARCHAR2(10);
+
+ALTER TABLE  PROD_DTLS
+ADD CONSTRAINT FK_COMP_CODE FOREIGN KEY(COMP_CODE)
+REFERENCES  COMP_DTLS(COMP_CODE)
+--ON DELETE CASCADE;
+
+UPDATE  PROD_DTLS
+SET COMP_CODE='I101'
+WHERE PROD_CODE LIKE'I%';
+
+UPDATE  PROD_DTLS
+SET COMP_CODE='W202'
+WHERE PROD_CODE LIKE'W%';
+
+UPDATE  PROD_DTLS
+SET COMP_CODE='D303'
+WHERE PROD_CODE LIKE'D%';
+
+UPDATE  PROD_DTLS
+SET COMP_CODE='S404'
+WHERE PROD_CODE LIKE'S%';
+
+
+
+DROP TABLE CUST_DTLS purge ;
+
+  Create Table  Cust_dtls
+  (
+  cno number(5) CONSTRAINT PK_Cno PRIMARY KEY,
+  cname varchar2(12),
+  city varchar2(10),
+  gender char
+  );
+
+insert into cust_dtls values('11110','AJAY','TEXAS','M');
+insert into cust_dtls values('11111','KIRAN','CHICAGO','M');
+insert into cust_dtls values('11112','VINOD','DELHI','M');
+insert into cust_dtls values('11113','MADHU','DELHI','M');
+insert into cust_dtls values('11114','ROCKY','TEXAS','M');
+insert into cust_dtls values('11115','CHARAN','CHICAGO','F');
+insert into cust_dtls values('11116','SONALI','DELHI','F');
+insert into cust_dtls values('11117','SAGAR','DELHI','M');
+insert into cust_dtls values('11118','SARAYU','TEXAS','F');
+insert into cust_dtls values('11119','PRATIKSHA','DELHI','F');
+
+DROP TABLE ACT_TYPES;
+
+Create table  Act_types
+(
+Act_type varchar2(5) CONSTRAINT PK_ACT_TYPE PRIMARY KEY,
+Act_name varchar2(50)
+);
+
+Insert into Act_types values('SB','SAVINGS BANK ACCOUNT');
+Insert into Act_types values('CA','CURRENT ACCOUNT');
+Insert into Act_types values('SAL','SALARY ACCOUNT');
+Insert into Act_types values('DEMAT','TRADING ACCOUNT');
+Insert into Act_types values('LOAN','LOAN ACCOUNT');
+Insert into Act_types values('FD','FIXED DEPOSIT ACCOUNT');
+Insert into Act_types values('RD','RECURRING DEPOSIT ACCOUNT');
+Insert into Act_types values('MFA','MUTUAL FUND ACCOUNT');
+Insert into Act_types values('INSA','INSURANCE ACCOUNT');
+
+DROP TABLE CUST_ACT_DTLS;
+
+Create Table Cust_act_dtls
+(
+actno char(11) constraint pk_actno primary key,
+act_type varchar2(5),
+constraint fk_act_type FOREIGN key(act_type) 
+references act_types(act_type),
+act_open_date date  constraint nn_OpenDate Not Null,
+act_bal number(8,2),
+cno number(5) ,
+constraint  fk_cno_cad  FOREIGN key(cno) 
+references cust_dtls(cno)
+);
+
+
+Insert into cust_act_dtls Values
+('20035201470','SB','11-MAY-10',49000,'11112');
+
+Insert into cust_act_dtls Values
+('20035201471','SAL','21-MAY-11',32000,'11110');
+
+Insert into cust_act_dtls Values
+('20035201472','DEMAT','21-MAY-11',123000,'11112');
+
+Insert into cust_act_dtls Values
+('20035201473','SB','01-MAR-12',23000,'11111');
+
+Insert into cust_act_dtls Values
+('20035201474','SAL','16-OCT-11',11000,'11113');
+
+Insert into cust_act_dtls Values
+('20035201475','SB','21-MAY-11',13000,'11114');
+
+Insert into cust_act_dtls Values
+('20035201476','SAL','21-MAY-11',23000,'11115');
+
+Insert into cust_act_dtls Values
+('20035201477','SAL','21-MAY-2018',53000,'11117');
+
+Insert into cust_act_dtls Values
+('20035201478','INSA','10-DEC-2017',205000,'11117');
+
+
+
+
+
+tables and data:-
+---------------------
+
+create table authors
+(
+authid   varchar2(10) constraint pk_authid_authors primary key,
+name    varchar2(14) constraint nn_name_authors not null,
+mobno   number(10) constraint uk_mobno_authors unique,
+constraint ck_mobno_authors check(length(mobno)=10),
+constraint ck_mob_begin_authors 
+check(mobno like'6%' or mobno like'7%' or mobno like'8%'
+or mobno like'9%'),
+mailid  varchar2(30),
+address  varchar2(300)
+);
+
+insert all
+into authors values
+('auth01','chetan','9991199911','che123@gmail.com','hno-120,fno-101,hyd-500079')
+into authors values
+('auth02','robinson',8880088800,'rob23@gmail.com','hno-12-1-20/1,maxis nagar,hyd-500028')
+into authors values
+('auth03','chand',9988776600,'c4tech@gmail.com','hno-18-16-120/5,vimala nagar,hyd-500028')
+into authors values
+('auth04','bipin das',6787898911,'bipincoss@gmail.com','plot no: 201,flat no: 501,ashok nagar,hyd-500044')
+into authors values
+('auth05','cvraman',7657657659,'cvrmaths@gmail.com','hno-120-14-15/3,t nagar,chennai-400045')
+(select * from dual);
+
+
+create table publishers
+(
+pubid   varchar2(10) constraint pk_pubid_publishers primary key,
+name  varchar2(24) constraint nn_name_publishers not null,
+mobno   number(10) constraint uk_mobno_publishers unique,
+constraint ck_mobno_publishers check(length(mobno)=10),
+constraint ck_mob_begin_publishers 
+check(mobno like'6%' or mobno like'7%' or mobno like'8%'
+or mobno like'9%'),
+email   varchar2(30),
+address  varchar2(300)
+);
+
+
+insert all
+into publishers values
+('pb01','vikas publications','6661166622','vkpb@hotmail.com','hyd')
+into publishers values
+('pb02','orelly publications',8998899822,'orelly@us.com','usa')
+into publishers values
+('pb03','arihant publications',7999979999,'arihant@uk.com','india')
+into publishers values
+('pb04','maruthi publications',8700980011,'mrtpub@gmail.com','india')
+(select * from dual);
+
+
+create table books
+(
+bookno    number(5) constraint pk_bookno_books primary key,
+bookname  varchar2(35) constraint nn_bname_books not null,
+pubdt    date,
+authid    varchar2(10),
+pubid     varchar2(10) ,
+constraint fk_authid_books FOREIGN KEY(authid)
+references authors(authid),
+constraint fk_pubid_books FOREIGN KEY(pubid)
+references publishers(pubid)
+);
+
+
+INSERT ALL
+into BOOKS values
+('17177','oracle sql and plsql',to_date('22/03/2015','dd/mm/yyyy'),'auth01','pb02')
+into BOOKS values
+('17188','linux programming',to_date('22/03/2017','dd/mm/yyyy'),'auth01','pb02')
+into BOOKS values
+('17199','python programming',to_date('22/03/2018','dd/mm/yyyy'),'auth02','pb01')
+into BOOKS values
+('17299','R programming',to_date('22/03/2018','dd/mm/yyyy'),'auth01','pb02')
+into BOOKS values
+('17211','advanced linux programming',to_date('12/02/2019','dd/mm/yyyy'),'auth01','pb01')
+into BOOKS values
+('17233','core and advanced java programming',to_date('10/03/2015','dd/mm/yyyy'),'auth01','pb03')
+(select * from dual);
+
+
+--------------------------------------------------------------------------------------------
+--Ex:	delete table students if already existed
+drop table STUDENTS;
+
+----creating sequence for student roll number?
+create sequence studrno
+start with 1010;
+
+clear buffer;
+
+--creating student table
+
+create  table students
+(
+studid    number(5) DEFAULT  studrno.nextval,
+name    varchar2(14) ,
+mobno   number(10),
+mailid    varchar2(20)
+);
+
+--inserting records
+insert into students(name,mobno,mailid)
+values('janaki',9898980000,'jan@gmail.com');
+insert into students(name,mobno,mailid)
+values('vasavi',9898980011,'vasavi@gmail.com');
+insert into students(name,mobno,mailid)
+values('suji',9898980012,'suji@gmail.com');
+insert into students(name,mobno,mailid)
+values('prasad',9898880000,'pd@hotmail.com');
+insert into students(name,mobno,mailid)
+values('raj',8898980000,'raj@gmail.com');
+insert into students(name,mobno,mailid)
+values('jagan',7898980000,'jagan@gmail.com');
+insert into students(name,mobno,mailid)
+values('kumar',9888980000,'kumar111@gmail.com');
+
+--delete "courses" table if already existed
+drop table courses;
+
+--creating courses table
+create table courses  
+(
+ccode    varchar2(10) constraint pk_ccode_courses primary key,
+name    varchar2(23),
+fee        number(5),
+duration  varchar2(14)
+);
+
+--inserting records into courses
+
+insert into courses values
+('ORCL','ORACLE DB DEVELOPER',5000,'60 DAYS');
+insert into courses values
+('JAVA','JAVA DEVELOPER',1000,'90 DAYS');
+insert into courses values
+('PYTHON','PYTHON PROGRAMMIN',1400,'60 DAYS');
+insert into courses values
+('UNX','UNIX / LINUX ',2000,'21 DAYS');
+insert into courses values
+('C','C PROGRAMMING ',1000,'40 DAYS');
+insert into courses values
+('C++','C++ PROGRAMMING',2000,'45 DAYS');
+
+
+
+--delete trainers table if existed
+drop table trainers;
+
+--create trainers table
+create table trainers
+(
+tcode    varchar2(10),
+tname   varchar2(14),
+);
+
+--insert records into trainers
+insert into trainers values
+('t1','dinesh');
+insert into trainers values
+('t2','nagoor babu');
+insert into trainers values
+('t3','durga');
+insert into trainers values
+('t4','swamy naidu');
+insert into trainers values
+('t5','mohan');
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------
+---------Tables For Set Operators-------------------------------------------------------
+----------------------------------------------------------------------------------------
+
+CREATE TABLE CUST_BR1
+(
+CID char(5) ,
+Cname varchar2(20),
+city varchar2(20),
+Gender varchar2(7),
+Mobile number(10)
+);
+
+--------------DATA--------------------------
+
+insert into cust_br1 values('c001','jaya','hyd','male',986612121);
+insert into cust_br1 values('c002','kiran','hyd','male',9866986612);
+insert into cust_br1 values('c003','hemanth','hyd','male',8888888888);
+insert into cust_br1 values('c004','izaq','hyd','female',7676767676);
+insert into cust_br1 values
+('c005','vasavi','hyd','female',null);
+
+CREATE TABLE CUST_BR2
+(
+CID char(5),
+Cname varchar2(20),
+city varchar2(20),
+Gender varchar2(7),
+Mobile number(10)
+);
+
+----------------------DATA-------------------
+
+insert into cust_br2 values
+('c001','jabbar','delhi','male',null);
+insert into cust_br2 values('c002','hari','delhi','male',9898989898);
+insert into cust_br2 values('c003','smith','bangalore','female',8787878787);
+insert into cust_br2 values('c004','izaq','hyd','female',7676767676);
+
+
+
+
+CREATE TABLE CUST_BR3
+(
+CID char(5),
+Cname varchar2(20),
+city varchar2(20),
+Gender varchar2(7),
+Mobile number(10)
+);
+
+
+---------------------------DATA--------------------
+
+insert into cust_br3 values
+('c001','venkat','chennai','male',2323232323);
+insert into cust_br3 values
+('c002','kanth','delhi','male',null);
+insert into cust_br3 values
+('c003','smith','bangalore','female',8787878787);
+insert into cust_br3 values
+('c004','john','delhi','male',9090909090);
+insert into cust_br3 values
+('c005','bobby','chennai','female',null);
+
+----------------------------------------------------------------------------------------
+
+DROP TABLE CUST_DTLS PURGE ;
+
+  Create Table  Cust_dtls
+  (
+  cno number(5) CONSTRAINT PK_Cno PRIMARY KEY,
+  cname varchar2(12),
+  city varchar2(10),
+  gender char
+  );
+
+insert into cust_dtls values('11110','Ajay','Texas','M');
+insert into cust_dtls values('11111','Kiran','Chicago','M');
+insert into cust_dtls values('11112','vinod','Delhi','M');
+insert into cust_dtls values('11113','Madhu','Delhi','M');
+insert into cust_dtls values('11114','Rocky','Texas','M');
+insert into cust_dtls values('11115','Ching Fu','Chicago','F');
+insert into cust_dtls values('11116','Sonali','Delhi','F');
+insert into cust_dtls values('11117','Sagar','Delhi','M');
+insert into cust_dtls values('11118','Sarayu','Texas','F');
+insert into cust_dtls values('11119','Pratiksha','Delhi','F');
+
+DROP TABLE ACT_TYPES;
+
+Create table  Act_types
+(
+Act_type varchar2(5) CONSTRAINT PK_ACT_TYPE PRIMARY KEY,
+Act_name varchar2(30)
+);
+
+Insert into Act_types values('SB','Savings Bank A/c.');
+Insert into Act_types values('CA','Current A/c.');
+Insert into Act_types values('SAL','Salary A/c.');
+Insert into Act_types values('DEMAT','Trading A/c.');
+Insert into Act_types values('LOAN','Home loan A/c.');
+Insert into Act_types values('FD','Fixed Deposit A/c.');
+
+DROP TABLE CUST_ACT_DTLS;
+
+Create Table Cust_act_dtls
+(
+actno char(11) constraint pk_actno primary key,
+act_type varchar2(5),
+constraint fk_act_type FOREIGN key(act_type) 
+references act_types(act_type),
+act_open_date date  constraint nn_OpenDate Not Null,
+act_bal number(8,2),
+cno number(5) ,
+constraint  fk_cno_cad  FOREIGN key(cno) 
+references cust_dtls(cno)
+);
+
+
+Insert into cust_act_dtls Values
+('20035201470','SB','11-MAY-10',49000,'11112');
+
+Insert into cust_act_dtls Values
+('20035201471','SAL','21-MAY-11',32000,'11110');
+
+Insert into cust_act_dtls Values
+('20035201472','DEMAT','21-MAY-11',123000,'11112');
+
+Insert into cust_act_dtls Values
+('20035201473','SB','01-MAR-12',23000,'11111');
+
+Insert into cust_act_dtls Values
+('20035201474','SAL','16-OCT-11',11000,'11113');
+
+Insert into cust_act_dtls Values
+('20035201475','SB','21-MAY-11',13000,'11114');
+
+Insert into cust_act_dtls Values
+('20035201476','SAL','21-MAY-11',23000,'11115');
+
+
+
+tables and data:-
+---------------------
+
+create table authors
+(
+authid   varchar2(10) constraint pk_authid_authors primary key,
+name    varchar2(14) constraint nn_name_authors not null,
+mobno   number(10) constraint uk_mobno_authors unique,
+constraint ck_mobno_authors check(length(mobno)=10),
+constraint ck_mob_begin_authors 
+check(mobno like'6%' or mobno like'7%' or mobno like'8%'
+or mobno like'9%'),
+mailid  varchar2(30),
+address  varchar2(30)
+);
+
+insert all
+into authors values
+('auth01','chetan','9991199911','che123@gmail.com','hno-120,fno-101,hyd-500079')
+into authors values
+('auth02','robinson',8880088800,'rob23@gmail.com',null)
+(select * from dual);
+
+
+create table publishers
+(
+pubid   varchar2(10) constraint pk_pubid_publishers primary key,
+name  varchar2(24) constraint nn_name_publishers not null,
+mobno   number(10) constraint uk_mobno_publishers unique,
+constraint ck_mobno_publishers check(length(mobno)=10),
+constraint ck_mob_begin_publishers 
+check(mobno like'6%' or mobno like'7%' or mobno like'8%'
+or mobno like'9%'),
+email   varchar2(30),
+address  varchar2(30)
+);
+
+
+insert all
+into publishers values
+('pb01','vikas publications','6661166622','vkpb@hotmail.com','hyd')
+into publishers values
+('pb02','orelly publications',8998899822,'orelly@us.com','usa')
+into publishers values
+('pb03','arihant publications',7999979999,'arihant@uk.com','india')
+(select * from dual);
+
+
+create table books
+(
+bookno    number(5) constraint pk_bookno_books primary key,
+bookname  varchar2(35) constraint nn_bname_books not null,
+pubdt    date,
+authid    varchar2(10),
+pubid     varchar2(10) ,
+constraint fk_authid_books FOREIGN KEY(authid)
+references authors(authid),
+constraint fk_pubid_books FOREIGN KEY(pubid)
+references publishers(pubid)
+);
+
+
+INSERT ALL
+into BOOKS values
+('17177','oracle sql and plsql',to_date('22/03/2005','dd/mm/yyyy'),'auth01','pb02')
+into BOOKS values
+('17188','linux programming',to_date('22/03/2010','dd/mm/yyyy'),'auth01','pb02')
+into BOOKS values
+('17199','python programming',to_date('22/03/2014','dd/mm/yyyy'),'auth02','pb01')
+into BOOKS values
+('17299','R programming',to_date('22/03/2011','dd/mm/yyyy'),'auth01','pb02')
+into BOOKS values
+('17211','advanced linux programming',to_date('12/02/2014','dd/mm/yyyy'),'auth01','pb01')
+into BOOKS values
+('17233','core and advanced java programming',to_date('10/03/2005','dd/mm/yyyy'),'auth01','pb03')
+(select * from dual);
+
+
+--------------------------------------------------------------------------------------------
+alter table stud_join_dtls
+add
+constraint cpk_tid_sid_cid_studjoindtls  PRIMARY KEY(tid,sid,cid);
+
+--------------------------------------------------------------------------------------------
+--Ex:	delete table students if already existed
+drop table STUDENTS;
+
+----creating sequence for student roll number?
+create sequence studrno
+start with 1010;
+
+clear buffer;
+
+--creating student table
+
+create  table students
+(
+studid    number(5) DEFAULT  studrno.nextval,
+name    varchar2(14) ,
+mobno   number(10),
+mailid    varchar2(20)
+);
+
+--inserting records
+insert into students(name,mobno,mailid)
+values('janaki',9898980000,'jan@gmail.com');
+insert into students(name,mobno,mailid)
+values('vasavi',9898980011,'vasavi@gmail.com');
+insert into students(name,mobno,mailid)
+values('suji',9898980012,'suji@gmail.com');
+insert into students(name,mobno,mailid)
+values('prasad',9898880000,'pd@hotmail.com');
+insert into students(name,mobno,mailid)
+values('raj',8898980000,'raj@gmail.com');
+insert into students(name,mobno,mailid)
+values('jagan',7898980000,'jagan@gmail.com');
+insert into students(name,mobno,mailid)
+values('kumar',9888980000,'kumar111@gmail.com');
+
+--delete "courses" table if already existed
+drop table courses;
+
+--creating courses table
+create table courses  
+(
+ccode    varchar2(10) constraint pk_ccode_courses primary key,
+name    varchar2(23),
+fee        number(5),
+duration  varchar2(14)
+);
+
+--inserting records into courses
+
+insert into courses values
+('ORCL','ORACLE DB DEVELOPER',5000,'60 DAYS');
+insert into courses values
+('JAVA','JAVA DEVELOPER',1000,'90 DAYS');
+insert into courses values
+('PYTHON','PYTHON PROGRAMMIN',1400,'60 DAYS');
+insert into courses values
+('UNX','UNIX / LINUX ',2000,'21 DAYS');
+insert into courses values
+('C','C PROGRAMMING ',1000,'40 DAYS');
+insert into courses values
+('C++','C++ PROGRAMMING',2000,'45 DAYS');
+
+
+
+--delete trainers table if existed
+drop table trainers;
+
+--create trainers table
+create table trainers
+(
+tcode    varchar2(10),
+tname   varchar2(14),
+);
+
+--insert records into trainers
+insert into trainers values
+('t1','dinesh');
+insert into trainers values
+('t2','nagoor babu');
+insert into trainers values
+('t3','durga');
+insert into trainers values
+('t4','swamy naidu');
+insert into trainers values
+('t5','mohan');
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------
+---------Tables For Set Operators-------------------------------------------------------
+----------------------------------------------------------------------------------------
+
+CREATE TABLE CUST_BR1
+(
+CID char(5) ,
+Cname varchar2(20),
+city varchar2(20),
+Gender varchar2(7),
+Mobile number(10)
+);
+
+--------------DATA--------------------------
+
+insert into cust_br1 values('c001','jaya','hyd','male',986612121);
+insert into cust_br1 values('c002','kiran','hyd','male',9866986612);
+insert into cust_br1 values('c003','hemanth','hyd','male',8888888888);
+insert into cust_br1 values('c004','izaq','hyd','female',7676767676);
+insert into cust_br1 values
+('c005','vasavi','hyd','female',null);
+
+CREATE TABLE CUST_BR2
+(
+CID char(5),
+Cname varchar2(20),
+city varchar2(20),
+Gender varchar2(7),
+Mobile number(10)
+);
+
+----------------------DATA-------------------
+
+insert into cust_br2 values
+('c001','jabbar','delhi','male',null);
+insert into cust_br2 values('c002','hari','delhi','male',9898989898);
+insert into cust_br2 values('c003','smith','bangalore','female',8787878787);
+insert into cust_br2 values('c004','izaq','hyd','female',7676767676);
+
+
+
+
+CREATE TABLE CUST_BR3
+(
+CID char(5),
+Cname varchar2(20),
+city varchar2(20),
+Gender varchar2(7),
+Mobile number(10)
+);
+
+
+---------------------------DATA--------------------
+
+insert into cust_br3 values
+('c001','venkat','chennai','male',2323232323);
+insert into cust_br3 values
+('c002','kanth','delhi','male',null);
+insert into cust_br3 values
+('c003','smith','bangalore','female',8787878787);
+insert into cust_br3 values
+('c004','john','delhi','male',9090909090);
+insert into cust_br3 values
+('c005','bobby','chennai','female',null);
+
+----------------------------------------------------------------------------------------
