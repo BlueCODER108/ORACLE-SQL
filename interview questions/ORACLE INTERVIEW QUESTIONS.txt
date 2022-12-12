@@ -1,0 +1,37 @@
+               INTERVIEW QUESTIONS
+
+1) How to delete duplicate records from a table?
+2) what is ROWID?
+3) what is object and what is property?
+4) How to display filtered data from a table?
+5) what are the logical operators and their use?
+6) what is a join ?
+7) How to define relation between tables?
+8) what is foreign key ?
+9) How to display combined data from similar tables?
+10) How to delete records from a table?
+11) How to rebuild a table?
+12) what is the difference between DELETE, DROP, TRUNCATE?
+13) what is the difference between UNIQUE & PRIMARY KEY?
+14) How to change table structure?
+15) what is grant?
+16) How to find out nth highest salary?
+17) what are aggregations?
+18) what is the use of a trigger?
+19) what is a procedure?
+20) what are the differences between procedure and function?
+21) what is the use of GROUP BY clause?
+22) Can i use HAVING clause , without GROUP BY clause?
+23) can i use DISTINCT & GROUP BY clauses in a single query?
+24) what is a transaction in oracle?
+25) what is data model?
+26) what is DEFAULT?
+27) How to display top n number of records in oracle?
+28) what is a view ?
+29) what is index?
+30) what are the set operators?
+31) what do you mean by constraints?
+32) what is normalization?
+33) what is the disadvantage in denormalization?
+34) How to generate numbers automatically?
+35) How to print column values in a  specific order?
